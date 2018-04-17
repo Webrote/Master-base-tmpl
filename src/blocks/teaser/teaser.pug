@@ -1,0 +1,43 @@
+//- Все примеси в этом файле должны начинаться c имени блока (teaser)
+
+mixin teaser(props)
+
+	//- Принимает:
+	//-   props {
+	//-     date: ''        	{string} - текст с названием (выводится над полем)
+	//-     title: ''        	{string} - Заголовок
+	//-     text: ''        	{string} - текст
+	//-     isMoreLink: false	{bool}   - флаг ссылка Подробнее
+	//- 	mods: ''         	{string} - модификаторы блока
+	//- Вызов:
+		+teaser({
+			date: "21 января 2018",
+			title: "Дорогие друзья! Появились в продаже семена «Уральский дачник» и «Роял сидс».",
+			text: "Наш ассортимент расширяется! Теперь у нас можно купить семена овощей и цветов «Уральский Дачник» и «Роял Сидс»! Уральский Дачник - это уникально.",
+			isMoreLink: true,
+		})
+
+	-
+		if(typeof(props) === 'undefined') {
+			var props = {};
+		}
+		var allMods = '';
+		if(typeof(props.mods) !== 'undefined' && mods) {
+			var modsList = props.mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' teaser_' + modsList[i].trim();
+			}
+		}
+
+	.teaser(class=allMods)&attributes(attributes)
+		if(typeof(props.date) !== 'undefined' && props.date)
+			.teaser__date!=props.date
+		
+		if(typeof(props.title) !== 'undefined' && props.title)
+			a.teaser__title(href="")!= props.title
+		
+		if(typeof(props.text) !== 'undefined' && props.text)
+			.teaser__text!= props.text
+		
+		if(typeof(props.isMoreLink) !== 'undefined' && props.isMoreLink)
+			a.teaser__more(href="news-page.html") Подробнее

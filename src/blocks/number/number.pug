@@ -1,0 +1,24 @@
+//- Все примеси в этом файле должны начинаться c имени блока (number)
+
+mixin number(value = 1, mods)
+
+	//- Принимает:
+	//-   value    {string} - текст
+	//-   mods    {string} - список модификаторов
+	//- Вызов:
+		+number('Текст', 'some-mod')
+
+	-
+		// список модификаторов
+		var allMods = '';
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' number_' + modsList[i].trim();
+			}
+		}
+
+	.number(class=allMods)&attributes(attributes)
+		span.number__minus
+		input(type="text", value=value)
+		span.number__plus

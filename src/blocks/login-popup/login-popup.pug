@@ -1,0 +1,44 @@
+//- Все примеси в этом файле должны начинаться c имени блока (login-popup)
+
+mixin login-popup(mods)
+
+	//- Принимает:
+	//-   mods    {string} - список модификаторов
+	//- Вызов:
+		+login-popup('some-mod')
+
+	-
+		// список модификаторов
+		var allMods = '';
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' login-popup_' + modsList[i].trim();
+			}
+		}
+
+	.login-popup(class=allMods)&attributes(attributes)
+		+form()
+			//- Поле "Логин"
+			+field-text({
+				title: 'Логин',
+				isTextarea: false,
+				mods: 'cols-md-4-8',
+				val: '',
+			})
+
+			//- Поле "Пароль"	
+			+field-text({
+				title: 'Пароль',
+				isTextarea: false,
+				mods: 'cols-md-4-8',
+				val: '',
+				attrs: {
+					type: "password",
+				}
+			})
+
+			+field-actions("",'offset-md-2')
+				+btn('Вход', 'primary')
+
+		+link('Забыли пароль?', '')(href="/password-recovery.html", class='login-popup__link-pass-request')

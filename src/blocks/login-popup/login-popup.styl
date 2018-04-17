@@ -1,0 +1,42 @@
+// В этом файле должны быть стили для БЭМ-блока login-popup, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.login-popup
+	absolute top 50px left 0
+	z-index 2001
+	background-color #FFF 
+	width 290px
+	padding 20px
+	box-shadow 0px 5px 30px rgba(#000,0.3) 
+	border-radius 3px
+	visibility hidden
+	opacity 0
+	transform scale(0.5) 
+	transform-origin left top
+	transition all 150ms 0ms ease-in-out, transform 200ms 0ms cubic-bezier(0.175, 0.885, 0.32, 1.275)
+	
+	&:before
+		content "" 
+		absolute bottom 100% left 10px
+		width 0
+		height 0
+		border 10px solid transparent
+		border-bottom-color #fff
+
+	+media-breakpoint-up(sm)
+		width 320px
+	
+	&__link-pass-request
+		color $link-color
+		+hover()
+			color $link-hover-color
+			
+		+media-breakpoint-up(md)
+			make-col-offset(4, $grid-columns)
+			padding-left 10px
+			
+	&_shown
+		opacity 1
+		visibility visible
+		transform scale(1) 

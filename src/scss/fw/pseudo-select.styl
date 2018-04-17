@@ -1,0 +1,51 @@
+.pseudoselect
+	position relative
+	display block
+	width 100% 
+	padding 0 0 0 25px 
+	text-align left
+	pseudoselect()
+	transit(,200ms)
+		
+	&__placer
+		display block
+		vertical-align middle
+		margin-right 45px
+		overflow hidden
+		white-space nowrap
+		text-overflow ellipsis
+		
+	
+	&__icon
+		display block
+		absolute top 0 right 0
+		width 30px
+		height 100% 
+		// border-left 1px solid #aaa
+		// border-radius 0 4px 4px 0  
+		
+		&:before
+			content "▼" 
+			font-size 12px
+			
+
+	&.active
+		border-radius 0
+		
+			
+	&.disabled
+		opacity 0.5
+		
+.drop
+	drop()
+	
+	& li
+		color $drop-list-color
+		cursor pointer
+		padding 5px 25px 
+		// border-bottom 1px solid rgba(#000,0.1)
+		transit(background-color, 150ms)
+		
+		+hover-focus-active()
+			background $drop-list-hover-bg
+			color $drop-list-hover-color 

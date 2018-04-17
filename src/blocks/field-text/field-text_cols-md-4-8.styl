@@ -1,0 +1,14 @@
+.field-text
+	&_cols-md-4-8
+		+media-breakpoint-up(md)
+			make-row()
+				
+		& ^[0]__name
+			+media-breakpoint-up(md)
+				make-col-ready()
+				make-col(4)
+				
+		& ^[0]__input-wrap
+			+media-breakpoint-up(md)
+				make-col-ready()
+				make-col(8)

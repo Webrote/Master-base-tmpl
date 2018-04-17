@@ -1,0 +1,32 @@
+//- Все примеси в этом файле должны начинаться c имени блока (search)
+
+mixin search(props)
+
+	//- Принимает:
+	//-   props {
+	//-   	value:    {string} - текст
+	//-  	 mods:    {string} - список модификаторов
+	//-   }
+	//- Вызов:
+		+search({
+			value: 'some-text',
+			mods: 'some-text'
+		})
+
+	-
+		// список модификаторов
+		var allMods = '';
+		var value = '';
+		if(typeof(props.mods) !== 'undefined' && props.mods) {
+			var modsList = props.mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' search_' + modsList[i].trim();
+			}
+		}
+		if (typeof(props.value) !== 'undefined' && props.value) {
+			value = props.value;
+		}
+
+	form.search(class=allMods)&attributes(attributes)
+		input(type="text", placeholder="Например: Почва 3D", value= value)
+		button.i-ui-btn-rnd(type="submit")

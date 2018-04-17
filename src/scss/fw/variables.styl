@@ -1,0 +1,306 @@
+// 
+//  Variables
+// 
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-grid-classes ?= 	true
+	
+
+
+//== Colors
+
+$black ?=			#000
+$white ?=			#fff
+
+$green ?=			#5cac41
+$dark-green ?=		#2e620d
+
+$blue ?=			#52b3e9
+
+$orange ?=			#f0ab1a
+$dark-orange ?=		#c0901a
+
+$light-gray ?= 		#ebebeb
+$semi-gray ?= 		#ccc
+$dark-gray ?= 		#b2b2b2
+
+$green-gradient ?= 	"#5da742, #94c582"
+$blue-gradient ?= 	"#53b3e9, #8ecdf1"
+$orange-gradient ?=	"#f0ab1b, #f5c868"
+
+
+$brand-primary ?=       darken(#428bca, 6.5) // #337ab7
+
+//== Scaffolding
+
+$body-bg ?=				#fff
+$text-color ?=			#333
+$text-muted ?=			#999
+
+
+//** Global textual link color.
+$link-color ?=            	#007eca
+$link-decoration ?= 		none
+$link-hover-color ?=    	#52b3e9
+$link-hover-decoration ?= 	underline
+$link-visited-color ?=    	#745b97
+
+$border-color ?=			#cfcfcf
+
+//== Typography
+
+$font-family-sans-serif ?= ProximaNova, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+$font-family-monospace ?=  SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+$font-family-base ?=       $font-family-sans-serif
+
+$font-size-base ?=         1rem //14px
+$font-size-large ?=        ceil($font-size-base * 1.25) // ~18px
+$font-size-small ?=        ceil($font-size-base * 0.875) // ~12px
+
+$font-weight-light ?=           300
+$font-weight-normal ?=          400
+$font-weight-bold ?=            700
+
+$font-weight-base ?=        $font-weight-normal
+
+// Head font-size
+$h1-font-size?=				$font-size-base * 2.5
+$h2-font-size?=				20px //$font-size-base * 2
+$h3-font-size?=				18px //$font-size-base * 1.75
+$h4-font-size?=				$font-size-base * 1.5
+$h5-font-size?=				$font-size-base * 1.25
+$h6-font-size?=				$font-size-base
+
+
+//== Components
+
+$line-height-base ?=		1.5	// 22/14
+$line-height-medium ?= 		1.222222 // 18/22
+$line-height-small ?= 		1.142857 	// 16/14
+
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+$line-height-computed ?=   floor($font-size-base * $line-height-base) // ~22px
+
+//** By default, this inherits from the `<body>`.
+$headings-font-family ?=   inherit
+$headings-font-weight ?=   500
+$headings-line-height ?=   1.1
+$headings-color ?=         inherit
+
+$display1-size ?=          6rem
+$display2-size ?=          5.5rem
+$display3-size ?=          4.5rem
+$display4-size ?=          3.5rem
+
+$display1-weight  ?=       300
+$display2-weight  ?=       300
+$display3-weight  ?=       300
+$display4-weight  ?=       300
+$display-line-height  ?=   $headings-line-height
+
+
+//== Menu
+$menu-width ?= 				300px
+$menu-bg-color ?=           #fbfbfb
+
+
+//== Forms
+
+
+//-- Z-index master list
+$zindex-mobile-menu ?=					2000
+$zindex-burger ?= 						1000
+$zindex-overlay ?=						900
+$zindex-dropdown ?= 					100
+
+$zindex-section-fp ?= 					1
+$zindex-header-fp ?= 					2
+$zindex-header-menu-wrap-fp ?= 			5
+$zindex-menu-main-fp ?= 				9
+$zindex-logo-fp ?= 						20
+
+
+
+//== Media queries breakpoints
+//
+$screen-xs-min ?=  			0 // 480px
+$screen-sm-min ?=  			576px // 768px
+$screen-md-min ?=			768px // 992px
+$screen-lg-min ?= 			992px // 1200 px
+$screen-xl-min ?=			1200px
+
+$grid-breakpoints ?= {
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1230px
+}
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max ?=			($screen-sm-min - 1)
+$screen-sm-max ?=			($screen-md-min - 1)
+$screen-md-max ?=			($screen-lg-min - 1)
+$screen-lg-max ?=			($screen-xl-min - 1)
+
+//== Grid system
+// 
+
+// Maximum container width
+$container-max ?=       1170px
+$container-min ?=       320px
+//** Number of columns in the grid.
+$grid-columns ?= 		12
+//** Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width ?= 	30px
+
+$grid-float-breakpoint ?=     $screen-sm-min
+$grid-float-breakpoint-max ?= ($grid-float-breakpoint - 1)
+
+
+//== Container sizes
+$container-sm ?=               540px
+$container-md ?=               720px
+$container-lg ?=               960px
+$container-xl ?=               1140px
+
+$container-max-widths ?= {
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1200px
+}
+
+//== Breadcrumb
+//
+//##
+$breadcrumb-font-size ?= 13px
+$breadcrumb-text-color ?= #999
+$breadcrumb-link-color ?= #999
+$breadcrumb-delimiter-content ?= "/"
+$breadcrumb-delimiter-font-size ?= $breadcrumb-font-size
+
+
+//== Pagination
+//
+//##
+
+$pagination-color ?=					#191919
+$pagination-bg ?=						#fff
+$pagination-border ?=         			#f4f4f4
+$pagination-padding-vertical ?=			6px
+$pagination-padding-horizontal ?=		10px
+
+$pagination-hover-color ?=				#191919
+$pagination-hover-bg ?=					#ebebeb
+$pagination-hover-border ?=				#ebebeb
+
+$pagination-active-color ?=				#191919
+$pagination-active-bg ?=				#ebebeb
+$pagination-active-border ?=			#ebebeb
+
+$pagination-active-class ?=            '.pager__current'
+$pagination-dots-class ?=  				'.pager__dots'
+
+// Gamburger
+$burger-color ?=				#fff
+$burger-hover-color ?=			#555
+$burger-border-radius ?=		0
+$burger-width ?=				32px
+$burger-all-height ?=			31px
+$burger-one-height ?=			3px
+// растояние между элементами бургера
+$_burger-pseudo-between ?= ($burger-all-height - ($burger-one-height * 3)) / 2
+// величина смещение верхнего и нижнего элемента
+$burger-pseudo-offset ?= $_burger-pseudo-between + $burger-one-height
+
+
+
+// == Forms
+// 
+
+// Отступы справа и слева для колонок с формами при инлайн расположении
+$form-inline-indent ?= 						10px
+
+$form-control-placeholder-color ?=			#a7a7a7
+$form-control-color ?=						#495057
+$form-control-height ?= 					35px
+$form-control-border-width ?= 				1px
+$form-control-border-color ?= 				#ced4da
+$form-control-border-radius ?= 				3px
+$form-control-bg ?= 						#fff
+$form-control-box-shadow ?= 				none
+
+$form-control-disabled-bg ?= 				#f0f0f6
+$form-control-disabled-border-color ?= 		#ececf3
+
+$form-control-focus-color ?= 				$form-control-color
+$form-control-focus-border-color ?=			#80bdff
+$form-control-focus-bg ?= 					$form-control-bg
+$form-control-focus-box-shadow ?= 			inset 0 1px 1px rgba($black, .075)
+
+// == Pseudo form elements
+// 
+// Pseudo radio
+// 
+
+$radio-befor-border ?= 				true
+$radio-befor-bg ?= 					true
+
+$radio-before-size ?= 				14px // Должно быть четно, что бы избежать смещения на 0.5px
+$radio-after-size ?= 				6px
+
+$radio-before-border-width ?=		2px
+$radio-before-border-color ?= 		#555
+$radio-before-bg ?= 				#ccc
+
+$radio-after-bg ?= 					#333
+
+// Pseudo radio
+// 
+
+$checkbox-befor-border ?= 			true
+$checkbox-befor-bg ?= 				true
+
+$checkbox-before-size ?= 			18px
+
+$checkbox-before-border-radius ?=	4px
+$checkbox-before-border-width ?=	2px
+$checkbox-before-border-color ?= 	#555
+$checkbox-before-bg ?= 				#ccc
+
+$checkbox-before-border-color-checked ?= 	#777
+$checkbox-before-bg-checked ?= 				#eee
+
+// Pseudo select
+// 
+$select-height ?= 					$form-control-height
+$select-lineheight ?=				$select-height - 2px // размер чуть меньше чем высота (из-за рамки)
+$select-border-width ?= 			1px
+$select-border-color ?= 			#dadae7 
+$select-border-radius ?= 			3px
+$select-bg ?= 						#E1E2ED 
+$select-text-color ?= 				#6C6C6C // цвет текста на главном элементе
+
+$select-border-focus-color ?= 		$form-control-focus-border-color
+$select-focus-bg ?= 				#efefef
+$select-text-focus-color ?= 		darken($select-text-color, 20)
+
+
+$drop-border-width ?= 				1px
+$drop-border-color ?= 				#b5bcc4
+$drop-bg ?= 						#fff
+$drop-list-color ?= 				#000 
+$drop-list-hover-color ?= 			#fff
+$drop-list-hover-bg ?= 				#3875d7
+
+
+// Прижимаем футер к низу страницы
+$footer-height ?=					100px
+
+
+// Переменные анимации
+$animate-off-breakpoin ?= 			601px

@@ -1,0 +1,29 @@
+//- Все примеси в этом файле должны начинаться c имени блока (topcontrol)
+
+//- Блок используется как контейнер для таких инструментов как "Сортировать по" и 
+//- "Показывать отдельные категории (все/новинки)"
+
+mixin topcontrol()
+
+	//- Вызов:
+		+topcontrol(showItemsTop = ['Все', 'Новинки'], sortItems = ['По цене'])
+
+	-
+		var sortItems = attributes.sortItems || null
+		var showItems = attributes.showItemsTop || null
+
+
+	.topcontrol()
+		// Sotring filter
+		if sortItems
+			+sortperpage({
+				items: sortItems,
+				mods: ''
+			})
+
+		//- Show items
+		if showItems
+			+showperpage({
+				items: showItems,
+				mods: 'filled',
+			})

@@ -1,0 +1,95 @@
+// В этом файле должны быть стили для БЭМ-блока btn, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность http//nicothin.github.io/idiomatic-pre-CSS/#priorit
+
+$gray-lighter=				hsl(0, 0%, 80%)
+$gray-lightest=				hsl(0, 0%, 90%)
+$btn-text-color=			#191919
+$line-height= 				1.5
+
+$field-padding-vertical=	0.2em
+$field-padding-horizontal=	1em
+
+$border-radius=				0px
+
+.btn
+	box-sizing border-box
+	display inline-block
+	vertical-align middle
+	margin 0
+	padding $field-padding-vertical  $field-padding-horizontal
+	white-space nowrap
+	user-select none
+	text-align center
+	font-size 15px
+	font-weight 500 
+	font-family inherit
+	line-height $line-height
+	text-decoration none
+	text-transform none
+	color $btn-text-color
+	border-radius $border-radius
+	border 1px solid #000
+	background-color transparent
+	background-image none
+	cursor pointer
+	transit(,150ms)
+
+	+hover()
+		text-decoration none
+		color #fff
+		background-color $green
+		border-color $green
+		
+	&_disabled
+	&:disabled 
+		opacity 0.5
+		color $text-color
+		background-color $gray-lightest
+		border-color $gray-lighter
+
+		@at-root a.btn_disabled 
+			pointer-events none
+			
+	&_lg
+		font-size 20px
+		font-weight 800 
+		padding 0.5em 0
+		width 100% 
+		
+	&_primary
+		color #fff
+		border none
+		background-color $green
+		padding 5px 24px
+		box-shadow 1px 1px 0 0 darken($green, 15)
+		transition all ease-in-out 100ms 
+		
+		&:hover
+			background-color $green 
+			// box-shadow 1px 1px 0 0 #9bce7e
+			box-shadow 1px 1px 0 0 lighten($green,21)
+		
+		&:disabled
+			color #FFF 
+			background-color $semi-gray
+			box-shadow 1px 1px 0 0 darken($dark-gray, 15)
+			cursor default
+			
+	&_buy
+		color #fff
+		border none
+		background-color $orange
+		padding 5px 24px
+		box-shadow 1px 1px 0 0 darken($orange, 15)
+		transition all ease-in-out 100ms 
+		
+		&:hover
+			background-color $orange
+			box-shadow 1px 1px 0 0 lighten($orange, 21)
+		
+		&:disabled
+			color #FFF 
+			background-color $semi-gray
+			box-shadow 1px 1px 0 0 darken($dark-gray, 15)
+			cursor default

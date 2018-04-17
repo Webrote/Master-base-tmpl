@@ -1,0 +1,28 @@
+// В этом файле должны быть стили для БЭМ-блока field-actions, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+$field-actions__text-color--muted =           hsl(0, 0%, 50%)
+
+$field-actions__font-size--small =            80%
+
+$field-actions__line-height =                 1.5
+
+.field-actions 
+
+	display block
+	margin-top 1rem
+	margin-bottom 1rem
+
+	&__text
+		display block
+		margin-top 1rem
+		margin-bottom 1rem
+		font-size $field-actions__font-size--small
+		color $field-actions__text-color--muted
+		line-height 1.2em
+		
+	&_offset-md-2
+		+media-breakpoint-up(md)
+			make-col-offset(4, $grid-columns)
+			padding-left 10px

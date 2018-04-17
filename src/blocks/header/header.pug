@@ -1,0 +1,87 @@
+//- Все примеси в этом файле должны начинаться c имени блока (header)
+
+mixin header(isLogin, mods)
+
+	//- Принимает:
+	//-   isLogin 	{bool} - флаг зарегистрирован или нет
+	//-   mods    {string} - список модификаторов
+	//- Вызов:
+		+header('Текст', 'some-mod')
+
+	-
+		// список модификаторов
+		var allMods = '';
+		// console.log(isLogin)
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' header--' + modsList[i].trim();
+			}
+		}
+
+	.header(class=allMods, role='banner')&attributes(attributes)
+		.header__left
+			.header__desctop-logo
+				+logo('/')
+					img(src='images/logo.png', alt='Logo')
+
+		.header__right
+			.header__right-top
+
+				//- Burger
+				+burger('Показать меню', 'mobile-menu', 'mobile-menu_shown')
+
+				//- Поле поиска
+				.header__search
+					+search({
+						value: '',
+						mods: 'header'
+					})
+				
+				//- Логотип для мобильной версии
+				.header__mobil-logo
+					+logo('/')
+						img(src='images/logo-mobil.png', alt='Logo')
+
+				//- Поле регистрации
+				.header__log
+
+					if isLogin
+						a.header__log-user-icon.icon-user(href="")
+						a.header__log-label.header__log-label_regOn(href="/personal-account.html")
+							+label('Константин Костинович')
+						a.header__log-logout-icon.i-ui-logout(href="", title="Выход из личного кабинета")
+
+					else 
+						a.header__log-user-icon.icon-user(href="", title="Вход", class="toggler", data-target-id="login-popup", data-target-class-toggle="login-popup_shown")
+						a.header__log-label(href="/registration.html")
+							+label('Регистрация')
+
+						//- Login popup
+						+login-popup()#login-popup
+
+				//- Поле корзины
+				.header__cart
+					a.header__cart-icon.icon-cart(href="/cart-page.html")
+					span.header__cart-count-label
+						+label('999')
+						
+						//- +tooltip('.header__cart-info-content', 'left').header__cart-info.i-ui-info
+						.header__cart-info.i-ui-info.tooltip_left(title=".header__cart-info-content")
+							
+						
+						// Этот элемент нужен для вывода Подсказки
+						// не отображается на экране.
+						span.header__cart-info-content(style="display:none")
+							|Минимальная сумма заказа 3000
+							span.rouble a
+
+					span.header__cart-sum-label
+						+label('1834 <span class="rouble">a</span>')
+
+			.header__right-bottom
+
+				//- Блок главного меню
+				.header__menu
+					+main-nav()
+

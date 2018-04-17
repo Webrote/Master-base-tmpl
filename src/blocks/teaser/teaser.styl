@@ -1,0 +1,57 @@
+// В этом файле должны быть стили для БЭМ-блока teaser, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.teaser
+	
+	&__date
+		muted()
+		margin-bottom 7px
+		
+	&__title
+		display block
+		font-size 18px
+		font-weight bold 
+		color #191919 
+		line-height 1.166667
+		margin-bottom 7px
+		
+		+hover-focus()
+			color @color 
+		
+	&__text
+		font-size 15px
+		line-height 1.33334
+		margin-bottom 7px
+		
+	&__more
+		font-size 15px
+		font-weight 500 
+		color $green
+		text-decoration none
+		border-bottom 1px dotted transparent
+		transit(,150ms)
+			
+		&:after
+			font-family: "svetloyar" !important;
+			font-style: normal !important;
+			font-weight: normal !important;
+			font-variant: normal !important;
+			text-transform: none !important;
+			speak: none;
+			line-height: 1;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			content: "\67";
+			vertical-align middle
+			margin-left 5px
+			transit(,150ms)
+			
+		+hover-focus() 
+			text-decoration none
+			color #000
+			
+			&:after
+				color #000 
+			
+		

@@ -1,0 +1,21 @@
+// соотношение размера заголовка поля к самому полю 1/2
+.form
+	&_4-to-8
+		.field-text
+			+media-breakpoint-up(md)
+				make-row()
+			
+		.field-text__name
+			+media-breakpoint-up(md)
+				make-col-ready()
+				make-col(4)
+			
+		.field-text__input-wrap
+			+media-breakpoint-up(md)
+				make-col-ready()
+				make-col(8)
+			
+		.field-actions
+			+media-breakpoint-up(md)
+				padding-left 15px
+				make-col-offset(4)

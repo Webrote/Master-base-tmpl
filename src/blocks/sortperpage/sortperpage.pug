@@ -1,0 +1,37 @@
+//- Все примеси в этом файле должны начинаться c имени блока (sortperpage)
+
+mixin sortperpage(props)
+
+	//- Принимает:
+	//- props {
+	//- 	items : [] 		{array} список элементов
+	//-   	mods  : ''		 {string} - модификаторы блока
+	//- Вызов:
+		+sortperpage({
+			items: ['По цене', 'По алфавиту'],
+			mods: 'some-mods',
+		})
+
+	-
+		// список модификаторов
+		var allMods = '';
+		if(typeof(props.mods) !== 'undefined' && props.mods) {
+			var modsList = props.mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' sortperpage_' + modsList[i].trim();
+			}
+		}
+
+	
+	.sortperpage(class=allMods)&attributes(attributes)
+		span.sortperpage__label Сортировать:
+		
+		each item, index in props.items
+			span.sortperpage__item(class = index==0 ? 'sortperpage__item_active' : '')
+				if index == 0
+					span.sortperpage__name!= item
+				else
+					a.sortperpage__name(href='')!= item
+
+				a.i-ui-caret-down.sortperpage__arrow.sortperpage__arrow_down(href="",title="down", class= index==0 ? 'sortperpage__arrow_active' : '')
+				a.i-ui-caret-up.sortperpage__arrow.sortperpage__arrow_up(href="",title="up")

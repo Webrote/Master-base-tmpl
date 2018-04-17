@@ -1,0 +1,28 @@
+//- Все примеси в этом файле должны начинаться c имени блока (map)
+
+mixin map(location, id, mods)
+
+	//- Принимает:
+	//-   location : {
+	//- 	name: "text"  - название точки (используется для вывода в hintContent)
+	//- 	address: "text"  - адрес точки (используется для вывода в balloonContentBody)
+	//-   }
+	//-   id      {string} - id блока с картой (для JS)
+	//-   mods    {string} - список модификаторов
+	//- Вызов:
+		+map({
+			name: "ООО 'Светлояр-НН'",
+			address: "603002, г. Нижний Новгород,<br> ул. Алеши Пешкова, дом 40",
+		},'blockId', 'some-mod')
+
+	-
+		// список модификаторов
+		var allMods = '';
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' map_' + modsList[i].trim();
+			}
+		}
+
+	.map(data='{"name":"' + location.name + '","address":"' + location.address + '"}' ,class=allMods, id=id)&attributes(attributes)

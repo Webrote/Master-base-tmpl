@@ -1,0 +1,23 @@
+//- Все примеси в этом файле должны начинаться c имени блока (bottomcontrol)
+
+//- Блок используется как контейнер для таких инструментов как "Пагинация" и 
+//- "Показывать n элементов на странице"
+mixin bottomcontrol()
+
+	//- Вызов:
+		+bottomcontrol()(showItemsBottom = ['15','30','45','Все'])
+
+	-
+		var items = attributes.showItemsBottom || null
+		
+
+	.bottomcontrol()
+		//- Pagination
+		+pagination()
+		
+		if items
+			//- Show items
+			+showperpage({
+				items: items,
+				mods: '',
+			})

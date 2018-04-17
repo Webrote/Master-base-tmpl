@@ -1,0 +1,13 @@
+// В этом файле должны быть стили для БЭМ-блока field-radio, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+$field-radio__color-danger =			hsl(2, 64%, 58%)
+
+.field-radio 
+
+	&_error 
+
+		& ^[0]__name-text
+		& ^[0]__help-text 
+			color $field-radio__color-danger

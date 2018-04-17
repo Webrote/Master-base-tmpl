@@ -1,0 +1,27 @@
+//- Все примеси в этом файле должны начинаться c имени блока (link)
+
+mixin link(title, mods)
+
+	//- Принимает:
+	//-   props {
+	//- 	title: ''		{string} - текст ссылки
+	//- 	mods: ''		{string} - модификаторы блока
+	//-   	
+	//-   text    {string} - текст
+	//-   mods    {string} - список модификаторов
+	//- Вызов:
+		+link('Текст', 'some-mod')(href="/")
+
+	-
+		var allMods = '';
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' link_' + modsList[i].trim();
+			}
+		}
+
+	a.link(class=allMods)&attributes(attributes)
+		span!= title
+
+		block

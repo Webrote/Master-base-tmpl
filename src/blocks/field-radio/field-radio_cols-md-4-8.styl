@@ -1,0 +1,16 @@
+.field-radio
+	&_cols-md-4-8
+		+media-breakpoint-up(md)
+			make-row()
+			
+		& ^[0]__title
+			+media-breakpoint-up(md)
+				make-col-ready()
+				make-col(4)
+				
+
+		& ^[0]__input-wrap
+			+media-breakpoint-up(md)
+				make-col-ready()
+				make-col(8)
+				flex-direction column

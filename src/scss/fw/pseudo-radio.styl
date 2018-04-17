@@ -1,0 +1,43 @@
+.pseudoradio
+	&__margin
+		margin-bottom 10px 
+		
+	& label
+		position relative
+		padding-left 40px 
+		cursor pointer
+		font-size inherit
+		display inline-block
+		user-select none
+
+	& input[type="radio"]
+		position absolute
+		left -9999px
+		
+		& + label:before
+		& + label:after
+			content "" 
+			position absolute
+			border-radius 50% 
+			
+		& + label:before
+			pseudo-radio-before()
+		
+		& + label:after
+			width 0 
+			height 0
+			pseudo-radio-after()
+			transit(,100ms)
+		
+		&:checked	
+			& + label:after
+				pseudo-radio-after-checked() 
+				background-color rgba($radio-after-bg,0.7)
+				
+	&.disabled
+		& input[type="radio"]
+			& + label
+				color rgba(85, 85, 85, 0.5)
+				&:before
+					background-color rgba(197, 198, 216, 0.5) !important
+					border-color rgba(197, 198, 216, 0.9) !important

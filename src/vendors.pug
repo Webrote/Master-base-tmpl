@@ -1,0 +1,89 @@
+extends pug/template.pug
+
+block variables
+	- var page_class = ""
+	- var isLogin = true
+	- var breadcrumb_chain = ["Главная", "Производители"] 
+
+block append head
+	link(rel='stylesheet', href='css/vendors-page-styles.css')
+
+block page
+	+topline()
+
+	+breadcrumbs(breadcrumb_chain)
+	
+	h1.title Лучшие производители
+	.vendors__best
+		.vendors__best-wrap
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-1.png')")
+				.vendors__best-name Русский огород
+				.vendors__best-remain
+					span 120 товаров
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-2.png')")
+				.vendors__best-name Гавриш
+				.vendors__best-remain
+					span 98 товаров
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-3.png')")
+				.vendors__best-name Седек
+				.vendors__best-remain
+					span 77 товаров
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-4.png')")
+				.vendors__best-name Агрос
+				.vendors__best-remain
+					span 46 товаров
+
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-1.png')")
+				.vendors__best-name Русский огород
+				.vendors__best-remain
+					span 120 товаров
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-2.png')")
+				.vendors__best-name Гавриш
+				.vendors__best-remain
+					span 98 товаров
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-3.png')")
+				.vendors__best-name Седек
+				.vendors__best-remain
+					span 77 товаров
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-4.png')")
+				.vendors__best-name Агрос
+				.vendors__best-remain
+					span 46 товаров
+
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-1.png')")
+				.vendors__best-name Русский огород
+				.vendors__best-remain
+					span 120 товаров
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-2.png')")
+				.vendors__best-name Гавриш
+				.vendors__best-remain
+					span 98 товаров
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-3.png')")
+				.vendors__best-name Седек
+				.vendors__best-remain
+					span 77 товаров
+			.vendors__best-item
+				a.vendors__best-img(href="/catalog-vendor.html" style="background-image: url('images/vendor-4.png')")
+				.vendors__best-name Агрос
+				.vendors__best-remain
+					span 46 товаров
+
+	h2.title Все производители
+	
+	- var id = 0;
+	.vendors__list
+		.row
+			while id < 14
+				.col-lg-3.col-md-4.col-sm-6
+					+vendor-list(id++ ,"page")

@@ -1,0 +1,43 @@
+// В этом файле должны быть стили для БЭМ-блока breadcrumbs, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.breadcrumbs
+	font-size round($breadcrumb-font-size * 0.86)
+	color $breadcrumb-text-color
+	background-color transparent
+	padding 5px 0
+	display inline-block
+	line-height 1
+	margin-bottom 15px
+	
+	a
+		display inline-block
+		font-size round($breadcrumb-font-size * 0.86)
+		color $breadcrumb-link-color
+		border-bottom 1px solid rgba($breadcrumb-link-color, 0.5)
+		line-height 1
+		transit(,100ms)
+		
+		+hover-focus()
+			color $breadcrumb-link-color
+			text-decoration none
+			border-bottom 1px solid transparent
+			
+	+media-breakpoint-up(md)
+		font-size $breadcrumb-font-size
+		
+		a
+			font-size $breadcrumb-font-size
+
+	&__delimiter
+		&:before
+			content $breadcrumb-delimiter-content
+			font-size $breadcrumb-delimiter-font-size
+			color $breadcrumb-text-color
+			margin-left 6px 
+			margin-right 3px 
+		
+
+	&__inline
+		display inline-block

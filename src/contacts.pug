@@ -1,0 +1,103 @@
+extends pug/template.pug
+
+block variables
+	- var page_class = ""
+	- var isLogin = false
+	- var breadcrumb_chain = ["Главная", "Контакты"] 
+
+block append head
+	link(rel='stylesheet', href='css/contacts-styles.css')
+
+block page
+	+topline()
+
+	+breadcrumbs(breadcrumb_chain)
+	
+	h1.title Контакты
+
+	.row
+		.col-md-6
+			h5.title.title_ontop Контактные данные
+
+			.contacts__block
+				.contacts__title Адрес:
+				.contacts__value 603002, г. Нижний Новгород, ул. Алеши Пешкова, дом 40
+
+			.contacts__block
+				.contacts__title Телефон:
+				.contacts__value 8 (831) 280-82-94
+
+			.contacts__block
+				.contacts__title Телефон/Факс:
+				.contacts__value 8 (831) 280-82-94
+
+			.contacts__block
+				.contacts__title E-mail:
+				.contacts__value sad@hobbysad.ru
+			
+			.contacts__block.margin-t-20
+				.contacts__title.contacts__title_block Режим работы:
+				.contacts__value.contacts__value_block Понедельник - суббота с 8:30 до 17:00
+				.contacts__value.contacts__value_block Прием заказов до 16:30
+				.contacts__value.contacts__value_block Воскресенье - выходной
+
+
+
+			h5.title Реквизиты
+			.contacts__block
+				.contacts__value Общество с ограниченной ответственностью "Светлояр-НН"
+			.contacts__block
+				.contacts__value ИНН 5257142550
+			.contacts__block
+				.contacts__value ОГРН 1135257008545
+			.contacts__block
+				.contacts__title Юр. адрес:
+				.contacts__value 603002, г. Нижний Новгород, ул. Алеши Пешкова, дом 40
+
+
+		.col-md-6.margin-down--sm-t-20
+			h5.title.title_ontop Обратная связь
+
+			+form().contacts__form.margin-b-50
+
+				//- Поле "Ваше ФИО"
+				+field-text({
+					title: 'Контактное лицо (ФИО)',
+					isTextarea: false,
+					mods: 'cols-md-4-8',
+					val: '',
+				})
+
+				//- Поле "Телефон"
+				+field-text({
+					title: 'Телефон',
+					isTextarea: false,
+					mods: 'cols-md-4-8',
+					val: '',
+				})
+
+				//- Поле "Электронная почта"	
+				+field-text({
+					title: 'Электронная почта',
+					isTextarea: false,
+					mods: 'cols-md-4-8',
+					val: '',
+				})
+
+				//- Поле "Сообщение"
+				+field-text({
+					title: 'Сообщение',
+					isTextarea: true,
+					mods: 'cols-md-4-8',
+					val: '',
+				})
+
+				+field-actions('* — обязательные поля','offset-md-2')
+					+btn('Отправить', 'primary')
+	
+	+map(
+		{
+			name: "ООО 'Светлояр-НН'",
+			address: "603002, г. Нижний Новгород,<br> ул. Алеши Пешкова, дом 40"
+		},
+		'contact-map','')

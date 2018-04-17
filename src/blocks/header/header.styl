@@ -1,0 +1,157 @@
+// В этом файле должны быть стили для БЭМ-блока header, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.header
+	display flex
+	height 150px
+	align-items center
+	
+	+media-breakpoint-down(sm)
+		display block
+		height auto
+	
+	// ----- Left part of Header
+	&__left
+		margin-right 5%
+	
+	// ----- Right part of Header
+	&__right
+		width 100% 
+		
+	&__right-top
+		position relative
+		display flex
+		justify-content space-between
+		margin-bottom 25px
+			
+		+media-breakpoint-down(md)
+			flex-wrap wrap
+			margin-bottom 0
+			
+		+media-breakpoint-down(sm)
+			padding-top 12px
+			margin-bottom 20px !important
+			
+		+media-breakpoint-down(xs)
+			
+			.label
+				padding-left 5px 
+				padding-right 5px
+			
+			
+	// -----------------------------------------
+		
+	// Desktop logo
+	&__desctop-logo
+		+media-breakpoint-down(sm)
+			display none
+			
+	// Mobile logo
+	&__mobil-logo
+		+media-breakpoint-down(sm)
+			margin-top 12px
+			
+		+media-breakpoint-up(md)
+			display none
+			
+	// Desctop menu
+	&__menu
+		+media-breakpoint-down(md)
+			display none
+	
+
+	// Search block
+	&__search
+		+media-breakpoint-down(md)
+			order 1
+			margin-top 30px
+			
+		+media-breakpoint-down(sm)
+			margin-top 12px !important
+			width 100%
+			padding-left 50px 
+
+
+	// Login block
+	&__log
+		position relative
+		+media-breakpoint-down(sm)
+			order -1
+		
+	&__log-label
+		display inline-block
+		max-width 140px
+		
+		.label
+			max-width 140px
+			overflow hidden
+		
+		&_regOn
+			.label
+				&:after
+					content ""
+					display block
+					absolute top 0 right 0
+					height 100% 
+					width 100% 
+					background-image linear-gradient(to right, 80% rgba(#e6e6e6,0), 95% rgba(#e6e6e6,1))
+				
+			+media-breakpoint-down(xs)
+				max-width 90px
+			
+				.label
+					max-width 90px	
+
+	&__log-logout-icon
+		position relative
+		display inline-block
+		vertical-align middle
+		width 31px
+		height 31px
+		background-color $light-gray 
+		color $green 
+		margin-left 3px
+		transit(,150ms)
+		
+		&:before
+			absolute top 50% left 50%
+			transform translate(-50%, -50%)
+			transit(,150ms)
+		
+		+hover-focus()
+			background-color $green 
+			text-decoration none
+			
+			&:before
+				color #FFF 
+			
+	
+
+	// Cart block
+	&__cart
+		+media-breakpoint-down(sm)
+			order -1
+		
+	&__cart-count-label
+		position relative
+		display inline-block
+		
+	&__cart-sum-label
+		display inline-block
+			
+	&__cart-info
+		absolute top -10px right -20px
+		z-index 2
+		// height 23px
+		padding 0 10px 0
+		cursor pointer
+		// transform translate(50%, -50%) 
+		
+		&:before
+			font-size 22px
+			color $orange
+			filter: drop-shadow(0px 1px 0px $dark-orange);
+		
+		+media-breakpoint-down(sm)
+			display none

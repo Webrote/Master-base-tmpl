@@ -1,0 +1,206 @@
+@import "fw/variables"
+@import "fw/mixins"
+
+.cart-page
+	
+	+media-breakpoint-down(lg)
+		&__table-sku-col
+			display none
+			
+	+media-breakpoint-down(md)
+		&__table-vendor-col
+			display none
+	
+	+media-breakpoint-down(sm)
+		&__table-weight-col
+		&__table-amount-col
+			display none
+			
+	+media-breakpoint-down(xs)
+		&__table-img-col
+			display none
+
+	&__info
+		position relative
+		display inline-block
+		padding 25px 30px 25px 15px
+		border 2px solid $orange
+		spacer-up(xs, b, 40px)
+		
+		& > *
+			vertical-align middle
+			
+		span
+			font-size 20px
+			line-height 1
+			font-weight 500 
+			color #191919 
+			
+			+media-breakpoint-down(md)
+				font-size 18px
+				
+			+media-breakpoint-down(xs)
+				font-size 15px
+			
+		& > span
+			padding-left 68px
+			display inline-block
+			
+			+media-breakpoint-down(md)
+				padding-left 58px
+				
+		+media-breakpoint-down(xs)
+			padding 10px
+
+	&__info-icon
+		position absolute
+		top 50%
+		left 15px
+		-webkit-transform translateY(-50%) 
+		transform translateY(-50%) 
+		display inline-block
+		line-height 1
+		margin-right 20px
+		
+		&:before
+			font-size 48px
+			color $orange
+			filter: drop-shadow(1px 1px 0px $dark-orange);
+			
+		+media-breakpoint-down(md)
+			&:before
+				font-size 40px
+				
+		+media-breakpoint-down(xs)
+			left 10px
+	
+	&__cart-form
+		spacer-up(xs,b,40px)
+
+		.field-actions
+			text-align right
+			
+			+media-breakpoint-down(xs)
+				text-align center
+				
+	// ---- Table ----
+	&__table
+		width 100% 
+		
+		& thead tr
+			border-bottom 4px solid #d9d9d9
+		& tbody tr
+			border-bottom 2px solid #ececec
+		
+		& thead th
+			muted()
+			font-size 15px
+			font-weight normal 
+			
+			+media-breakpoint-down(xs)
+				font-size 0
+			
+		& tbody td
+			padding 5px 0  
+			
+			+media-breakpoint-down(xs)
+				padding 15px 0 
+		
+	&__table-img
+		display block
+		width 70px
+		height 70px
+		background-repeat no-repeat
+		background-position center
+		background-size contain
+		
+	&__table-name-col
+		width 25%
+		padding-right 15px !important
+		
+		+media-breakpoint-down(sm)
+			width 35% 
+		+media-breakpoint-down(xs)
+			width 45% 
+			vertical-align top
+	
+	&__table-name
+		display inline-block
+		font-weight bold 
+		line-height 1
+		color #191919 
+		
+		+hover-focus()
+			color @color 
+
+	&__table-number-col
+		+media-breakpoint-down(xs)
+			text-align center
+	
+	&__table-vendor
+		display inline-block
+		line-height 1
+		color $text-color 
+		+hover-focus()
+			color @color 
+		
+	&__table-weight-col
+	&__table-amount-col
+	&__table-price-col
+	&__table-del-col
+		text-align center
+		// width 130px 
+	
+	// Result row
+	&__result
+		text-align right
+		margin-top 5px
+		
+		+media-breakpoint-down(sm)
+			margin-top 10px
+		+media-breakpoint-down(xs)
+			text-align left
+	
+	&__result-block
+		margin-left 30px
+		&:last-of-type
+			margin-left 55px
+			
+		+media-breakpoint-down(sm)
+			margin-left 20px
+			
+			&:last-of-type
+				margin-left 30px
+				
+		+media-breakpoint-down(xs)
+			display block
+			margin-left 0 !important
+		
+	&__result-capt
+		muted()
+		
+	&__result-val
+		font-weight bold 
+		color #333 
+		margin-left 5px
+		vertical-align middle
+		white-space nowrap
+		
+		&_sum
+			font-size 30px
+			margin-left 15px
+			span 
+				font-weight bold
+				
+			+media-breakpoint-down(sm)
+				font-size 24px
+				
+
+	// Форма офрмления заказа
+	&__order-form
+		
+		.field-actions
+			text-align right
+			
+			+media-breakpoint-down(xs)
+				text-align center

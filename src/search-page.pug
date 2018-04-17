@@ -1,0 +1,34 @@
+extends pug/template.pug
+
+block variables
+	- var page_class = ""
+	- var isLogin = false
+	- var breadcrumb_chain = ["Главная", "Поиск"] 
+
+block append head
+
+block page
+	+topline()
+
+	+breadcrumbs(breadcrumb_chain)
+
+	h1.title Поиск
+
+	+search({
+		value: 'Грунт',
+		mods: 'content'
+	})
+	
+	span.search__res-number
+		span.search__res-number-capt Найдено:
+		span.search__res-number-val 6
+	
+
+	h5.title Грунт
+	.row
+		.col-12
+			+topcontrol()(showItemsTop = ['Все', 'Новинки'], sortItems = ['По цене'])
+
+			+catalog-wrap(6)
+			
+			+bottomcontrol()(showItemsBottom = ['15','30','45','Все'])

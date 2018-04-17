@@ -1,0 +1,51 @@
+// В этом файле должны быть стили для БЭМ-блока sortperpage, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.sortperpage
+	font-size 15px
+	margin-right 40px
+	
+	// +media-breakpoint-down(xs)
+	// 	margin-bottom 15px
+		
+	&__label
+		font-weight 300 
+		margin-right 15px
+		muted()
+	
+	&__item + ^[0]__item
+		margin-left 15px
+		
+	&__name
+		font-weight 600 
+		margin-right 3px
+		color #191919
+		border-bottom 1px dotted transparent
+		transit(,200ms)
+		
+		+hover-focus()
+			color @color 
+			text-decoration none
+			border-bottom-color inherit 
+		
+		^[0]__item_active &
+			color $green 
+			+hover-focus()
+				border-bottom-color transparent
+			
+			
+	&__arrow
+		padding 0 4px 
+		text-decoration none
+		
+		+hover-focus()
+			text-decoration none
+		
+		&:before
+			font-size 9px 
+			color #ccc 
+			
+		&_active
+			&:before
+				color $green 

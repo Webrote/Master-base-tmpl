@@ -1,0 +1,29 @@
+//- Все примеси в этом файле должны начинаться c имени блока (showperpage)
+
+mixin showperpage(props)
+	//- props {
+	//- 	items : [] 		{array} список элементов
+	//-   	mods  : ''		 {string} - модификаторы блока
+	//- Вызов:
+		+showperpage({
+			items: ['5','10','15','все'],
+			mods: '',
+		})
+	
+	-
+		// список модификаторов
+		var allMods = '';
+		if(typeof(props.mods) !== 'undefined' && props.mods) {
+			var modsList = props.mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' showperpage_' + modsList[i].trim();
+			}
+		}
+
+	.showperpage(class=allMods)&attributes(attributes)
+		span.showperpage__text Показать:
+		each item, index in props.items
+			if index == 0
+				span.showperpage__item.showperpage__item_active!= item
+			else
+				a.showperpage__item(href="")!= item

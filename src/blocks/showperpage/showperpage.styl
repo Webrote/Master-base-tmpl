@@ -1,0 +1,40 @@
+// В этом файле должны быть стили для БЭМ-блока showperpage, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.showperpage
+	font-size 15px
+	font-weight 600 
+	
+	&__text
+		font-weight 300 
+		margin-right 15px
+		muted()
+
+	&__item
+		margin 0 8px
+		
+		a&
+			color $green 
+			border-bottom 1px dotted transparent
+			transit(,150ms)
+			
+			+hover-focus()
+				text-decoration none
+				border-bottom 1px dotted $green
+			
+		&_active
+			color #191919 
+			
+	&_filled
+		& ^[0]__text
+			margin-right 7px
+		
+		& ^[0]__item
+				
+			&_active
+				padding 4px 8px
+				margin 0
+				color #FFF 
+				background-color $green 
+				

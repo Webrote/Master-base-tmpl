@@ -1,0 +1,28 @@
+// В этом файле должны быть стили для БЭМ-блока label, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+$label-gray-lightest = 	hsl(0, 0%, 90%)
+$label-text-color =    	hsl(0, 0%, 10%)
+
+.label
+
+	display inline-block
+	position relative
+	margin 0 1px
+	vertical-align middle
+	line-height 1
+	padding 8px 10px
+	background-color $label-gray-lightest
+	color $label-text-color
+	text-decoration none
+	text-transform none
+	font-weight 500
+	font-size 15px
+	white-space nowrap
+	border-radius 0
+
+	&:hover
+	&:focus
+		color $label-text-color
+		text-decoration none

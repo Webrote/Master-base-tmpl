@@ -1,0 +1,38 @@
+form-control-focus()
+	&:focus
+		color $form-control-focus-color
+		background-color $form-control-focus-bg
+		border-color $form-control-focus-border-color
+		outline 0
+		box-shadow $form-control-focus-box-shadow
+		
+
+field-help-text()
+	$field-help-text__text-color--muted =         hsl(0, 0%, 50%)
+	$field-help-text__font-size--small =          15px//0.75em
+
+	display block
+	padding-top 0.4em
+	font-size $field-help-text__font-size--small
+	line-height 1.2em
+	color $field-help-text__text-color--muted
+
+	&:empty
+		display none
+		
+field-focus()
+	$field-focus__color-main=				hsl(208, 98%, 43%)
+	$field-focus__opacity=					0.7
+
+	outline 0
+	// box-shadow 0 0 0 2px rgba($field-focus__color-main, $field-focus__opacity)
+	border-color rgba($blue, 0.8)
+
+
+field-name()
+	$field-name__line-height=                 1.375em
+
+	display block
+	margin-bottom 0.4em
+	line-height $field-name__line-height
+	font-weight 500

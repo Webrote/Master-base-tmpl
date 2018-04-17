@@ -1,0 +1,32 @@
+@import "fw/variables"
+@import "fw/mixins"
+
+.contacts
+	&__block
+		margin-bottom 5px
+		line-height 1
+		 
+	&__title
+	&__value
+		display inline-block
+		font-size 14px
+		color #191919 
+		
+		&_block
+			display block
+			margin-bottom 3px
+	
+	&__title
+		muted()
+		font-weight 500 
+		margin-right 3px
+		
+	&__value
+		font-weight bold 
+		
+	&__form
+		.field-text__name
+			font-size 15px
+			
+		textarea
+			height 150px

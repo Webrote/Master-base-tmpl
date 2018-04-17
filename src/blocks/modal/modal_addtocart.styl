@@ -1,0 +1,67 @@
+.modal
+	
+	&_addtocart
+		text-align center
+		
+		& ^[0]__title
+			font-size 30px
+			margin-bottom 15px
+			text-align center
+			
+		& ^[0]__dialog 
+			
+			+media-breakpoint-up(md)
+				width 400px
+				height auto
+			+media-breakpoint-up(lg)
+				width 490px
+			
+		& ^[0]__header
+			padding 60px 0 0
+		
+		& ^[0]__content
+			padding 0 15px 55px 
+			
+		& ^[0]__info
+			position relative
+			padding 25px 15px 25px
+			margin-top 80px
+			border 2px solid $orange
+			// spacer-up(xs, b, 40px)
+			
+			span
+				font-size 20px
+				line-height 1
+				font-weight 500 
+				color #191919 
+
+		& ^[0]__info-icon
+			absolute top 0 left 50%
+			transform translate(-50%, -55%)
+			
+			&:before
+				font-size 48px
+				color $orange
+				filter: drop-shadow(1px 1px 0px $dark-orange); 
+				
+		&^[0]_open
+			+media-breakpoint-up(md)
+				display flex
+				justify-content center
+				align-items center
+				
+		@media (max-height 559px)
+			& ^[0]__header
+				padding 40px 0 0
+			
+			& ^[0]__title
+				font-size 26px
+				line-height 1
+				
+			& ^[0]__info
+				padding 15px 10px 10px
+				margin-top 40px
+				
+			& ^[0]__info-icon
+				&:before
+					font-size 40px

@@ -1,0 +1,13 @@
+// В этом файле должны быть стили для БЭМ-блока map, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.map
+	width 100% 
+	height 430px
+
+	+media-breakpoint-down(sm)
+		height 400px
+	
+	+media-breakpoint-down(xs)
+		height 100vw

@@ -1,0 +1,30 @@
+//- Все примеси в этом файле должны начинаться c имени блока (breadcrumbs)
+
+mixin breadcrumbs(chain, mods)
+
+	//- Принимает:
+	//-  chain 	{array} - массив с элементами крошек
+	//-   mods  {string} - список модификаторов
+	//- Вызов:
+		+breadcrumbs()
+	-
+		// список модификаторов
+		var allMods = '';
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' breadcrumbs_' + modsList[i].trim();
+			}
+		}
+
+	.breadcrumbs(class=allMods)&attributes(attributes)
+		each item, index in chain
+			if index !== chain.length - 1
+				.breadcrumbs__inline(itemscope, itemtype="http://data-vocabulary.org/Breadcrumb")
+					a(href="", itemprop="url")
+						span(itemprop="title") #{item}
+				span.breadcrumbs__delimiter
+
+			else
+				.breadcrumbs__inline(itemscope, itemtype="http://data-vocabulary.org/Breadcrumb")
+					span(itemprop="title") #{item}

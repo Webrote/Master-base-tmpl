@@ -1,0 +1,10 @@
+// В этом файле должны быть стили для БЭМ-блока sidebar, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.sidebar
+	&__item
+		spacer-up(xs, b, 30px)
+		
+		& .vendor-sb:last-of-type
+			spacer-up(xs, b, 20px)

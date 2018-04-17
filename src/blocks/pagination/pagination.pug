@@ -1,0 +1,43 @@
+//- Все примеси в этом файле должны начинаться c имени блока (pagination)
+
+mixin pagination(mods)
+
+	//- Принимает:
+	//-   mods  {string} - список модификаторов
+	//- Вызов:
+		+pagination()
+	-
+		// список модификаторов
+		var allMods = '';
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' pagination--' + modsList[i].trim();
+			}
+		}
+
+	ul.pager(class=allMods, aria-label='Page navigation')&attributes(attributes)
+		li.pager__item.pager__previous
+			a.pager__item-link(href="",title="На предыдущую страницу") ⏴
+		li.pager__item.pager__first
+			a.pager__item-link(href="",title="На первую страницу") 1
+		//- li.pager-ellipsis 
+		//- 	span …
+		li.pager__item
+			a.pager__item-link(href="",title="На страницу номер 3") 3
+		li.pager__item
+			a.pager__item-link(href="",title="На страницу номер 4") 4
+		li.pager__item
+			a.pager__item-link(href="",title="На страницу номер 5") 5
+		li.pager__item
+			a.pager__item-link(href="",title="На страницу номер 6") 6
+		li.pager__item.pager__current
+			span 7
+		li.pager__item.pager__dots 
+			span …
+		li.pager__item.pager__dots 
+			a.pager__item-link(href="") …
+		li.pager__item.pager__last
+			a.pager__item-link(href="",title="На последнюю страницу") 20
+		li.pager__item.pager__next
+			a.pager__item-link(href="",title="На следующую страницу") ⏵

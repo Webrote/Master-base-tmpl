@@ -1,0 +1,115 @@
+// В этом файле должны быть стили для БЭМ-блока field-radio, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+$field-radio__line-height =			2
+$field-radio__width-outer =			20px
+$field-radio__height-outer =		$field-radio__width-outer
+$field-radio__width-inner =			10px
+$field-radio__height-inner =		$field-radio__width-inner
+
+.field-radio 
+
+	display block
+	margin-bottom 1rem
+
+	&__title 
+		display block
+		font-weight 700
+		line-height $field-radio__line-height
+		margin-bottom 0.4em
+ 
+
+	&__input-wrap 
+
+		& + & 
+			margin-top 1rem
+   
+ 
+
+	&__name 
+		cursor pointer
+		position relative
+		display block
+		padding-left 1.5em
+		margin-right 0.6em
+		font-weight 400
+		line-height $field-radio__line-height
+ 
+
+	&__name-text 
+		display inline-block
+
+		// своя радиокнопка с картинкой
+
+		// &:before {
+		//   content: '';
+		//   position: absolute;
+		//   top: rem(5px);
+		//   left: 0;
+		//   width: rem(14px);
+		//   height: rem(14px);
+		//   background-image: svg-load('../blocks/field-radio/bg-img/radiobutton.svg');
+		//   background-size: 100%;
+		// }
+		// @at-root input:checked ~ &:before {
+		//   background-image: svg-load('../blocks/field-radio/bg-img/radiobutton--checked.svg');
+		// }
+
+		// / своя радиокнопка с картинкой
+
+		// своя радиокнопка без картинки
+
+		&:before 
+			content ''
+			position absolute
+			top 5px
+			left 0
+			width $field-radio__width-outer
+			height $field-radio__height-outer
+			border 2px solid #cfcfcf
+			border-radius 50%
+			box-shadow inset 0px 3px 6px 0 rgba(0, 0, 0, 0.1) 
+
+		// @at-root input:focus ~ &:before 
+		// 	@include field-focus
+
+
+		&:after 
+			content ''
+			position absolute
+			top 10px
+			left 5px
+			width $field-radio__width-inner
+			height $field-radio__height-inner
+			opacity 0
+			border-radius 50%
+			background-color #333
+			transition opacity 200ms
+
+			input:checked ~ &
+				opacity 1
+
+		// / своя радиокнопка без картинки
+
+	&__input
+		position absolute
+		top 0.8em
+		left 0
+		padding 0
+		margin 0
+		transform translateY(-50%)
+
+		&:focus
+		&:active 
+			field-focus()
+
+		// сокрытие инпута в случае использования своей радиокнопки
+		opacity 0
+
+	&__help-text-wrap 
+		padding-left 1.5em
+
+
+	&__help-text 
+		field-help-text()

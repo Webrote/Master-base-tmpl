@@ -1,0 +1,61 @@
+// В этом файле должны быть стили для БЭМ-блока pagination, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.pager-wrap
+	text-align center
+	margin 25px 0 20px
+	
+.pager
+	display flex
+	flex-wrap wrap
+	padding-left 0
+	margin $line-height-computed 0
+	list-style-type none
+	
+	// Для всех элементов
+	&__item
+		display block
+		margin-bottom 5px
+		a
+		span
+			display block
+			position relative
+			padding $pagination-padding-vertical $pagination-padding-horizontal
+			line-height $line-height-base
+			text-decoration none
+			color $pagination-color
+			background-color $pagination-bg
+			border 1px solid $pagination-border
+			transit(,200ms)
+			
+		// Для всех элементов кроме Предыдущий и Следующий
+		:not(.pager__previous)
+		:not(.pager__next)
+			margin 0 3px 
+	
+	// Для элементов у которых ссылки
+	&__item a
+		+hover-focus()
+			color $pagination-hover-color
+			background-color $pagination-hover-bg
+			border-color $pagination-hover-border
+			
+	// Активный элемент
+	{$pagination-active-class} 
+		span
+			+plain-hover-focus()
+				color $pagination-active-color
+				background-color $pagination-active-bg
+				border-color $pagination-active-border
+				cursor default
+			
+	// Предыдущий и Следующий элементы
+	&__previous
+	&__next
+		a
+			+plain-hover-focus()
+				padding $pagination-padding-vertical $pagination-padding-horizontal
+				background-color $green
+				color #FFF  
+		

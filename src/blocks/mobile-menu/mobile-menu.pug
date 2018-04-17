@@ -1,0 +1,33 @@
+//- Все примеси в этом файле должны начинаться c имени блока (mobile-menu)
+
+mixin mobile-menu(text, mods)
+
+	//- Принимает:
+	//-   text    {string} - текст
+	//-   mods    {string} - список модификаторов
+	//- Вызов:
+		+mobile-menu('Текст', 'some-mod')
+
+	-
+		// список модификаторов
+		var allMods = '';
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' mobile-menu--' + modsList[i].trim();
+			}
+		}
+
+	.mobile-menu#mobile-menu(class=allMods)&attributes(attributes)
+
+		.mobile-menu__inner
+
+			.mobile-menu__close(data-target-id='mobile-menu', data-target-class-remove='mobile-menu_shown')
+				span
+				span
+
+			+main-nav.mobile-menu__nav()
+
+			.mobile-menu__contacts
+				a.icon-phone-d-rnd-w(href="")
+				a.icon-email-d-rnd-w(href="")

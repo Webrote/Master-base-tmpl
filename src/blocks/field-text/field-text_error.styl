@@ -1,0 +1,19 @@
+$field-text__color-danger =                #ff0000
+
+.field-text
+
+	&_error 
+
+		& ^[0]__name 
+		& ^[0]__input 
+		& ^[0]__help-text 
+			color $field-text__color-danger
+
+
+		& ^[0]__input 
+			border-color $field-text__color-danger
+			// background-color lighten($field-text__color-danger, 35)
+				
+		& ^[0]__help-text
+			+media-breakpoint-up(lg)
+				absolute top 0 right -170px

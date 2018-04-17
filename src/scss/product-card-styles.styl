@@ -1,0 +1,74 @@
+@import "fw/variables"
+@import "fw/mixins"
+
+.product-card 
+	& .thumb__img
+		height 342px
+	
+	&__info
+		position relative
+		
+	// --- label ---
+	&__labels
+		position absolute
+		top 15px
+		left 50%
+		
+		+media-breakpoint-down(sm)
+			left auto
+			right 0
+		
+	&__news-label
+		width 75px
+		height 75px
+		background-image url("../images/new-label.png")
+		background-repeat no-repeat
+		 
+	// --- BLock info ----
+	&__info-block
+		margin-bottom 0px
+		
+	&__info-title
+	&__info-value 
+		display inline-block
+		font-size 15px
+	
+	&__info-title
+		muted()
+		
+	&__info-value 
+		font-weight 500 
+		color #333 
+	
+	// --- price ---
+	&__price-place
+		line-height 1
+		
+	&__go-reg
+		font-style italic
+		margin-bottom 5px
+		
+	&__price-old
+		font-size 16px
+		font-style normal
+		color #191919
+		text-align center
+		text-decoration line-through
+		
+		+media-breakpoint-down(xs)
+			text-align left
+		
+	&__price-actual
+		font-size 30px
+		font-style normal
+		color #333 
+		font-weight bold 
+		text-align right
+		white-space nowrap
+		
+		+media-breakpoint-down(xs)
+			text-align left
+		
+	&__control
+		text-align right
+		

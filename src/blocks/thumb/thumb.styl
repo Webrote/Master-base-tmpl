@@ -1,0 +1,39 @@
+// В этом файле должны быть стили для БЭМ-блока thumb, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.thumb
+	position relative
+	padding 17px
+	border-shadow()
+	
+	&__zoom
+		display block
+		absolute top 6px right 10px
+		
+		&:before
+			font-size 24px
+			color #D9D9D9
+			transit(,150ms)
+		
+		+hover-focus()
+			text-decoration none
+			
+		+hover()
+			&:before
+				color $green 
+				
+	&__img
+		display block
+		height 220px
+		
+		background-repeat no-repeat
+		background-position center
+		background-size contain
+		
+		+media-breakpoint-down(xs)
+			height 40vw
+			
+	&_small
+		& ^[0]__img
+			height 130px
