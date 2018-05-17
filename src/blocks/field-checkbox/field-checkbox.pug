@@ -50,7 +50,7 @@ mixin field-checkbox(checkboxes, title)
         if(typeof(checkbox.mods) !== 'undefined' && checkbox.mods) {
           var modsList = checkbox.mods.split(',');
           for (var i = 0; i < modsList.length; i++) {
-            allMods = allMods + ' field-checkbox__input-wrap--' + modsList[i].trim();
+            allMods = allMods + ' field-checkbox__input-wrap_' + modsList[i].trim();
           }
         }
       .field-checkbox__input-wrap(class=allMods)

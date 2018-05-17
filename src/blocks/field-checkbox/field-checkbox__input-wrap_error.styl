@@ -1,0 +1,13 @@
+// В этом файле должны быть стили для БЭМ-блока field-checkbox, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+$field-checkbox__color-danger=               hsl(2, 64%, 58%)
+
+.field-checkbox 
+
+	&__input-wrap_error
+
+		& ^[0]__name-text
+		& ^[0]__help-text
+			color $field-checkbox__color-danger

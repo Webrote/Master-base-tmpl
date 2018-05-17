@@ -7,9 +7,10 @@ document.addEventListener('DOMContentLoaded', function(){
   // }
 
   var mobilMenuClose = document.querySelector('.mobile-menu__close');
-  mobilMenuClose.addEventListener('click', mobilMenuCloset);
+  if (mobilMenuClose === null) return;
+  mobilMenuClose.addEventListener('click', mobilMenuClosing);
 
-  function mobilMenuCloset() {
+  function mobilMenuClosing() {
     var targetId = this.getAttribute('data-target-id');
     var targetClassRemove = this.getAttribute('data-target-class-remove');
 

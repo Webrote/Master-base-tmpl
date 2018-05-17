@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // Добавление/удаление модификаторов при фокусировке на ссылочном элементе
   var linkClassName = 'main-nav__link';
-  var linkClassNameShowChild = 'main-nav__item--show-child';
+  var linkClassNameShowChild = 'main-nav__item_show-child';
   var findLinkClassName = new RegExp(linkClassName);
   // Слежение за всплывшим событием focus (нужно добавить класс, показывающий потомков)
   document.addEventListener('focus', function(event) {

@@ -34,6 +34,9 @@
       "_error",
       "_cols-md-4-8"
     ],
+    "field-checkbox": [
+      "__input-wrap_error"
+    ],
     "form": [],
     "field-actions": [],
     "toggler": [],
@@ -41,8 +44,6 @@
     "sortperpage": [],
     "field-select": [],
     "filter-abc": [],
-    "storage-of-product": [],
-    "storage-of-vendor": [],
     "map": [],
     "close": [],
     "number": [],
@@ -62,11 +63,7 @@
   ],
   "addCssAfter": [],
   "singleCompiled": [
-    "./src/scss/index-styles.styl",
-    "./src/scss/vendors-page-styles.styl",
-    "./src/scss/product-card-styles.styl",
-    "./src/scss/contacts-styles.styl",
-    "./src/scss/cart-page-styles.styl"
+    "./src/scss/index-styles.styl"
   ],
   "addJsBefore": [
     "./node_modules/jquery/dist/jquery.min.js",

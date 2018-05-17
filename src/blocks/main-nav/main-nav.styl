@@ -9,52 +9,60 @@
 	// первый уровень
 	&__list 
 		display flex
+		flex-wrap wrap
 		margin 0
 		padding 0
 		list-style none
 		
-		+media-breakpoint-down(md)
-			flex-direction column
-			justify-content space-around
-		
-		+media-breakpoint-up(lg)
-			flex-wrap nowrap
-			flex-direction row
-			justify-content space-between
+		&_lvl-2 
+			display block
+			
+		&_lvl-3
+			display block
 
 	&__item 
 		position relative
 				
-		+media-breakpoint-up(lg)
-			&_active 
-				& > ^[0]__link 
-					color #000
+		&_active
+			& > ^[0]__link
+				color #000
 
 	&__link 
 		display block
+		padding 0.5em 1em
 		text-decoration none
-		font-weight 800 
+		background-color #fff
 		white-space nowrap
-		transit(,200ms)
+		// transit(,200ms)
 		
 		+hover-focus()
 			text-decoration none
+			background-color #999
 				
-		+media-breakpoint-down(md)
-			font-size 28px
-			color #FFF 
-
-		+media-breakpoint-up(lg)
-			font-size 16px
-			color #333 
-			line-height 1.5
-			padding 0 6px
+	&__sublist-wrapper
+		&_lvl-2
+			position absolute
+			top 100%
+			left 0
+			z-index 1
+			opacity 0
+			height 0
+			overflow hidden
+			transition opacity 200ms
 			
-			+hover-focus()
-				color #FFF 
-				background-color #5cac41
+			// stylelint-disable  max-nesting-depth
+			^[0]__item_show-child > &
+			^[0]__item:hover &
+				opacity 1
+				height auto
+				overflow visible
 				
-			
-		+media-breakpoint-up(xl)
-			font-size 20px
-			padding 0 12px
+		&_lvl-3
+			position absolute
+			z-index 1
+			top 0
+			left 100%
+			opacity 0
+			height 0
+			overflow hidden
+			transition opacity 200ms
