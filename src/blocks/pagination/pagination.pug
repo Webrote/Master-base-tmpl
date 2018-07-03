@@ -41,7 +41,7 @@ mixin pagination(props)
 mixin pagination-inner(rows)
 	if(typeof(rows) !== 'undefined' && rows)
 		li.pager__item.pager__previous
-			a.pager__item-link(href="",title="На предыдущую страницу") ⏴
+			a.pager__item-link(href="",title="На предыдущую страницу") ‹
 
 	li.pager__item.pager__first
 		a.pager__item-link(href="",title="На первую страницу") 1
@@ -66,4 +66,4 @@ mixin pagination-inner(rows)
 
 	if(typeof(rows) !== 'undefined' && rows)
 		li.pager__item.pager__next
-			a.pager__item-link(href="",title="На следующую страницу") ⏵
+			a.pager__item-link(href="",title="На следующую страницу") ›

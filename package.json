@@ -1,12 +1,12 @@
 {
-  "name": "Svetloyar",
+  "name": "Base",
   "version": "1.0.0",
-  "description": "Svetloyar",
+  "description": "Base",
   "author": "DK",
   "license": "WTFPL",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Webrote/svetloyar.git"
+    "url": "https://github.com/Webrote/Master-base-tmpl"
   },
   "scripts": {
     "test:style": "stylelint \"src/**/*.styl\" --syntax=styl",
