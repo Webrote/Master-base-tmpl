@@ -19,39 +19,9 @@ mixin footer(text, mods)
 		}
 
 	.footer(class=allMods, role='contentinfo')&attributes(attributes)
-		.row.footer__row
-			.col.footer__left
-				.footer__phones
-					//- span.footer__icon.icon-phone-d
-					span.footer__icon.i-ui-phone-fill
-					p #[span 8 (831)] 280-82-94 
-					p #[span 8 (831)] 246-73-06   
-					p #[span 8 (831)] 246-84-94
+		.footer__bottom.row
+			.footer__copyright.col-md-6
+				p © 1999-2018 Акционерное общество «Опытное Конструкторское Бюро Машиностроения имени И.И. Африкантова» (АО «ОКБМ Африкантов»)
 
-				.footer__address
-					//- span.footer__icon.icon-mark-d
-					span.footer__icon.i-ui-mark-fill
-					p #[span г.Нижний Новгород,#[br] ул. Алеши Пешкова, дом 40]
-				.footer__email
-					//- span.footer__icon.icon-email-d
-					span.footer__icon.i-ui-letter-fill
-					p #[span kulagina@svetloyar-nn.ru]
-
-			.col.footer__center
-				.footer__social
-					.footer__caption Мы в соцсетях
-					a.icon-vk(href="")
-					a.icon-inst(href="")
-					a.icon-fb(href="")
-					a.icon-yt(href="")
-					a.icon-ok(href="")
-
-				.footer__creditcards
-					.footer__caption Способы оплаты
-					span.icon-visa
-					span.icon-mascard
-					span.icon-mir
-
-			.col.footer__right
-				.footer__caption © 2018 Оптовый интернет-магазин «Светлояр»
-				a.footer__copyright(href="") R52.RU
+			.footer__creator.col-md-6
+				p Разработка - компания #[a(href="") «R52»]

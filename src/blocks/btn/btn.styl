@@ -38,8 +38,8 @@ $border-radius=				0px
 	+hover()
 		text-decoration none
 		color #fff
-		background-color $green
-		border-color $green
+		background-color $black
+		border-color $black
 		
 	&_disabled
 	&:disabled 
@@ -60,15 +60,15 @@ $border-radius=				0px
 	&_primary
 		color #fff
 		border none
-		background-color $green
+		background-color $primary
 		padding 5px 24px
-		box-shadow 1px 1px 0 0 darken($green, 15)
+		box-shadow 1px 1px 0 0 darken($primary, 15)
 		transition all ease-in-out 100ms 
 		
 		&:hover
-			background-color $green 
+			background-color $primary 
 			// box-shadow 1px 1px 0 0 #9bce7e
-			box-shadow 1px 1px 0 0 lighten($green,21)
+			box-shadow 1px 1px 0 0 lighten($primary,21)
 		
 		&:disabled
 			color #FFF 
@@ -76,20 +76,4 @@ $border-radius=				0px
 			box-shadow 1px 1px 0 0 darken($dark-gray, 15)
 			cursor default
 			
-	&_buy
-		color #fff
-		border none
-		background-color $orange
-		padding 5px 24px
-		box-shadow 1px 1px 0 0 darken($orange, 15)
-		transition all ease-in-out 100ms 
-		
-		&:hover
-			background-color $orange
-			box-shadow 1px 1px 0 0 lighten($orange, 21)
-		
-		&:disabled
-			color #FFF 
-			background-color $semi-gray
-			box-shadow 1px 1px 0 0 darken($dark-gray, 15)
-			cursor default
+	

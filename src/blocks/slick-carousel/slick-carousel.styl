@@ -1,0 +1,108 @@
+// В этом файле должны быть стили для БЭМ-блока slick-carousel, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.slick-carousel
+	.slick-arrow
+		position absolute
+		z-index 10
+		top 50% 
+		// transform translateY(-50%) 
+		
+
+		display inline-block
+		// position relative
+		width 40px
+		height 40px
+		background-color transparent
+		border 2px solid #e3e3e3
+		border-radius 50% 
+		transition all 150ms ease-in-out
+		cursor pointer
+		user-select none
+		
+		i
+			absolute top 50% left 50%
+			transform translate(-50%, -50%) 
+			display inline-block
+			line-height 0.8
+			font-size 12px
+			color #666
+			transition all 150ms ease-in-out 
+			
+			&:before
+				vertical-align middle
+	
+		+hover()
+			border-color #0067a6 
+			i
+				color #0061a1 
+	
+	+media-breakpoint-down(sm)
+		.slick-prev
+			left 5px
+		.slick-next
+			right 5px
+	+media-breakpoint-up(md)
+		.slick-prev
+			left -60px
+		.slick-next
+			right -60px
+					
+	+media-breakpoint-up(lg)
+		.slick-prev
+			left -80px
+		.slick-next
+			right -80px
+			
+	+media-breakpoint-up(xl)
+		.slick-prev
+			left -100px
+		.slick-next
+			right -100px
+		
+	
+	// Mods
+	&_photoevent
+		margin-bottom 20px
+		
+		& .slide
+			&__caption
+				font-family roboto
+				font-size 16px
+				font-weight $font-weight-normal
+				line-height 1
+				color #666 
+				background-color #F4F4F4 
+				padding 28px 40px
+				margin-bottom 15px
+				
+				+media-breakpoint-down(md)
+					padding 20px 20px
+				+media-breakpoint-down(sm)
+					padding 10px
+				  
+			&__img
+				height 310px
+				background-repeat no-repeat
+				background-position center
+				background-size cover
+				
+				+media-breakpoint-up(sm)
+					height 310px
+				+media-breakpoint-up(md)
+					height 420px
+				+media-breakpoint-up(lg)
+					height 580px
+				+media-breakpoint-up(xl)
+					height 630px
+			
+	&_photoevent-thumb
+		+media-breakpoint-down(sm)
+			display none
+		& .slide
+			height 143px
+			background-repeat no-repeat
+			background-position center
+			background-size cover
+			margin 0 10px 
