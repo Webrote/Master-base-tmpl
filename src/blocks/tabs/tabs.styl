@@ -1,0 +1,110 @@
+// В этом файле должны быть стили для БЭМ-блока tabs, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+$gray-lightest=               hsl(0, 0%, 90%)
+
+$text-color=                  hsl(0, 0%, 10%)
+$text-color--muted=           hsl(0, 0%, 50%)
+
+$border-color=                hsl(0, 0%, 60%)
+
+$line-height=                 1.5
+
+$field-padding-vertical=      0.3em
+$field-padding-horizontal=    0.7em
+
+.tabs 
+
+	&__links 
+		margin 0
+		padding 0
+		list-style none
+		display flex
+		flex-wrap wrap
+		align-items flex-end
+
+		.no-js & 
+			display none
+
+
+	&__link-wrap 
+		position relative
+		
+
+	&__link 
+		display block
+
+
+	&__content-wrapper 
+		display block
+		
+
+	&__content-item 
+
+		.js & 
+			display none
+
+		&_active 
+
+			.js & 
+				display block
+				
+
+	// Mods: Primary
+	&_primary
+		margin-top 1rem
+		margin-bottom 1rem
+		
+		& ^[0]__links 
+			padding 0
+			
+			+media-breakpoint-up(lg)
+				&:after 
+					content ''
+					flex-grow 1
+					height 1px
+					background-color $border-color
+			
+		& ^[0]__link-wrap 
+			border 1px solid $border-color
+			margin 0 0.3em 0.3em 0
+			
+			+media-breakpoint-up(lg)
+				margin 0
+
+				&:not(:last-child)
+					border-right none
+					
+			&_active
+
+				+media-breakpoint-up(lg) 
+					border-bottom 1px solid transparent
+
+				& ^[0]__link 
+					color $text-color !important
+					background-color #fff
+					
+		& ^[0]__link 
+			padding $field-padding-vertical $field-padding-horizontal
+			color $text-color--muted
+			text-decoration none
+			background-color $gray-lightest
+			
+			&:hover,
+			&:focus 
+				color $text-color--muted
+				
+			&:visited 
+				color $text-color--muted
+				
+		& ^[0]__content-wrapper 
+			padding $field-padding-vertical $field-padding-horizontal
+			border 1px solid $border-color
+
+			+media-breakpoint-up(lg) 
+				border-top none
+				
+		& ^[0]__content-item 
+			& > *:last-child 
+				margin-bottom 0

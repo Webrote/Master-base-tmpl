@@ -1,0 +1,22 @@
+//- Все примеси в этом файле должны начинаться c имени блока (drooltip)
+
+mixin drooltip(text, mods)
+
+	//- Принимает:
+	//-   text    {string} - текст
+	//-   mods    {string} - список модификаторов
+	//- Вызов:
+		+drooltip('Текст', 'some-mod')
+
+	-
+		// список модификаторов
+		var allMods = '';
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' drooltip_' + modsList[i].trim();
+			}
+		}
+
+	.drooltip(class=allMods)&attributes(attributes)
+		.drooltip__inner!= text

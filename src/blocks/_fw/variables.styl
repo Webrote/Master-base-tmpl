@@ -113,7 +113,7 @@ $zindex-logo-fp ?= 						20
 
 
 
-//== Media queries breakpoints
+//== Media queries breakpoints (old version)
 //
 $screen-xs-min ?=  			0 // 480px
 $screen-sm-min ?=  			576px // 768px
@@ -129,7 +129,7 @@ $grid-breakpoints ?= {
 	xl: 1230px
 }
 
-// So media queries don't overlap when required, provide a maximum
+// So media queries don't overlap when required, provide a maximum (old version)
 $screen-xs-max ?=			($screen-sm-min - 1)
 $screen-sm-max ?=			($screen-md-min - 1)
 $screen-md-max ?=			($screen-lg-min - 1)
@@ -150,12 +150,13 @@ $grid-float-breakpoint ?=     $screen-sm-min
 $grid-float-breakpoint-max ?= ($grid-float-breakpoint - 1)
 
 
-//== Container sizes
+//== Container sizes (old version)
 $container-sm ?=               540px
 $container-md ?=               720px
 $container-lg ?=               960px
 $container-xl ?=               1140px
 
+// the width includes the padding
 $container-max-widths ?= {
 	sm: 540px,
 	md: 720px,

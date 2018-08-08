@@ -1,7 +1,7 @@
 //- Все примеси в этом файле должны начинаться c имени блока (main-nav)
 //- Структура меню — в main-nav.data.pug
 
-mixin main-nav(selectedID)
+mixin main-nav(selectedID, mods)
 
   //- Принимает:
   //-   selectedID {string} - id пункта меню (по умолчанию — из main-nav.data.pug)
@@ -10,8 +10,19 @@ mixin main-nav(selectedID)
 
   //- подключаем файл со структурой данных блока
   include main-nav.data.pug
+  
+  -
+    // список модификаторов
+    var allMods = '';
+    // console.log(isLogin)
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' main-nav_' + modsList[i].trim();
+      }
+    }
 
-  nav.main-nav&attributes(attributes)
+  nav.main-nav(class=allMods)&attributes(attributes)
     //- +burger('Показать главное меню', 'nav', 'main-nav--open')(class='main-nav__toggler')
     ul.main-nav__list
       each menuItem in mainMenu
@@ -30,14 +41,14 @@ mixin main-nav-item(selectedID, item, level)
     var thisItemClass = 'main-nav__item';
     var thisLinkClass = 'main-nav__link';
     if(selectedID == item.id) {
-      thisItemClass += '  main-nav__item--active';
+      thisItemClass += '  main-nav__item_active';
     }
     if(item.childs) {
-      thisItemClass += '  main-nav__item--has-child';
+      thisItemClass += '  main-nav__item_has-child';
     }
     if(level > 1) {
-      thisItemClass += '  main-nav__item--lvl-' + level;
-      thisLinkClass += '  main-nav__link--lvl-' + level;
+      thisItemClass += '  main-nav__item_lvl-' + level;
+      thisLinkClass += '  main-nav__link_lvl-' + level;
     }
 
   li(class= thisItemClass)
@@ -46,8 +57,8 @@ mixin main-nav-item(selectedID, item, level)
 
 mixin main-nav-sublist-wrapper(level)
   -
-    var divClass = 'main-nav__sublist-wrapper  main-nav__sublist-wrapper--lvl-' + level;
-    var listClass = 'main-nav__list  main-nav__list--lvl-' + level;
+    var divClass = 'main-nav__sublist-wrapper  main-nav__sublist-wrapper_lvl-' + level;
+    var listClass = 'main-nav__list  main-nav__list_lvl-' + level;
   div(class= divClass)
     ul(class= listClass)
       block

@@ -50,30 +50,3 @@ $border-radius=				0px
 
 		@at-root a.btn_disabled 
 			pointer-events none
-			
-	&_lg
-		font-size 20px
-		font-weight 800 
-		padding 0.5em 0
-		width 100% 
-		
-	&_primary
-		color #fff
-		border none
-		background-color $primary
-		padding 5px 24px
-		box-shadow 1px 1px 0 0 darken($primary, 15)
-		transition all ease-in-out 100ms 
-		
-		&:hover
-			background-color $primary 
-			// box-shadow 1px 1px 0 0 #9bce7e
-			box-shadow 1px 1px 0 0 lighten($primary,21)
-		
-		&:disabled
-			color #FFF 
-			background-color $semi-gray
-			box-shadow 1px 1px 0 0 darken($dark-gray, 15)
-			cursor default
-			
-	

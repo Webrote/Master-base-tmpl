@@ -15,6 +15,7 @@ mixin teaser(props)
 			title: "Дорогие друзья! Появились в продаже семена «Уральский дачник» и «Роял сидс».",
 			text: "Наш ассортимент расширяется! Теперь у нас можно купить семена овощей и цветов «Уральский Дачник» и «Роял Сидс»! Уральский Дачник - это уникально.",
 			isMoreLink: true,
+			mods: ''
 		})
 
 	-
@@ -22,7 +23,7 @@ mixin teaser(props)
 			var props = {};
 		}
 		var allMods = '';
-		if(typeof(props.mods) !== 'undefined' && mods) {
+		if(typeof(props.mods) !== 'undefined' && props.mods) {
 			var modsList = props.mods.split(',');
 			for (var i = 0; i < modsList.length; i++) {
 				allMods = allMods + ' teaser_' + modsList[i].trim();
@@ -40,4 +41,4 @@ mixin teaser(props)
 			.teaser__text!= props.text
 		
 		if(typeof(props.isMoreLink) !== 'undefined' && props.isMoreLink)
-			a.teaser__more(href="news-page.html") Подробнее
+			+link("Читать дальше")(href=props.isMoreLink)

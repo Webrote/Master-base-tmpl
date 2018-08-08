@@ -8,6 +8,13 @@
 	flex-wrap wrap
 	justify-content space-between
 	align-items center
-	
 	spacer-down(md, b, 20px)
 
+	&__item
+		&_show
+			+media-breakpoint-down(md)
+				margin-top 20px
+				
+	+media-breakpoint-down(md)
+		flex-direction column
+		justify-content center

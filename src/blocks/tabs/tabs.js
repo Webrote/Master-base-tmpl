@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function(){
     var element = document.querySelector(tabId);
     if ( element && element.classList.contains('tabs__content-item') ) {
       var tabsParent = document.querySelector(tabId).closest('.tabs');
-      var activeTabClassName = 'tabs__link-wrap--active';
-      var activeTabContentClassName = 'tabs__content-item--active';
+      var activeTabClassName = 'tabs__link-wrap_active';
+      var activeTabContentClassName = 'tabs__content-item_active';
       // таб
       tabsParent.querySelectorAll('.'+activeTabClassName).forEach(function(item){
         item.classList.remove(activeTabClassName);

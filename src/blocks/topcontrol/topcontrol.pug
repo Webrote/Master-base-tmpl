@@ -5,25 +5,5 @@
 
 mixin topcontrol()
 
-	//- Вызов:
-		+topcontrol(showItemsTop = ['Все', 'Новинки'], sortItems = ['По цене'])
-
-	-
-		var sortItems = attributes.sortItems || null
-		var showItems = attributes.showItemsTop || null
-
-
-	.topcontrol()
-		// Sotring filter
-		if sortItems
-			+sortperpage({
-				items: sortItems,
-				mods: ''
-			})
-
-		//- Show items
-		if showItems
-			+showperpage({
-				items: showItems,
-				mods: 'filled',
-			})
+	.topcontrol
+		block

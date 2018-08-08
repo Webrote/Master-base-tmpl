@@ -1,33 +1,44 @@
 //- Все примеси в этом файле должны начинаться c имени блока (thumb)
 
-mixin thumb(imgUrl, linkUrl, mods)
-
+mixin thumb(props)
 	//- Принимает:
-	//-   imgUrl* {string}   - источник картинки
-	//-   linkUrl {string}    - ссылка для перехода
+	//-  {
+	//-   	imgUrl* {string}   - источник картинки
+	//-   	linkUrl {string}    - ссылка для перехода
+	//- 	isBg    {bool}  	- вывод картинки в виде img или как bg
+	//- 	mods {string}       - модификаторы
 	//- Вызов:
-				+thumb('img/joker.jpg', "/gallery.html")
+				+thumb({
+					imgUrl: 'img/joker.jpg',
+					linkUrl: '/gallery.html',
+					isBg: '',
+					mods: ''
+				})
 	
 	-
 		// список модификаторов
 		var allMods = '';
-		if(typeof(mods) !== 'undefined' && mods) {
-			var modsList = mods.split(',');
+		if(typeof(props.mods) !== 'undefined' && props.mods) {
+			var modsList = props.mods.split(',');
 			for (var i = 0; i < modsList.length; i++) {
 				allMods = allMods + ' thumb_' + modsList[i].trim();
 			}
 		}
 
-	- if (typeof(imgUrl) !== 'undefined')
-		- if (typeof(linkUrl) !== 'undefined')
-			.thumb(class=allMods)&attributes(attributes)
-				a.thumb__zoom.i-ui-btn-rnd(href=imgUrl, data-fancybox)
-				a.thumb__img(href=linkUrl, style='background-image: url("'+ imgUrl +'")')
-				//- img.thumb(src=url, alt=alt, width=width, height=height)&attributes(attributes)
+
+	- if (typeof(props.imgUrl) !== 'undefined')
+		- if (typeof(props.linkUrl) !== 'undefined')
+			- if (typeof(props.isBg) !== 'undefined' && props.isBg)
+				.thumb(class=allMods)&attributes(attributes)
+					a.thumb__img(href=props.linkUrl, style='background-image: url("'+ props.imgUrl +'")')
+
+			- else
+				.thumb(class=allMods)&attributes(attributes)
+					a(href=props.linkUrl)
+						img(src=props.imgUrl, alt=alt)
 		- else
 			.thumb(class=allMods)&attributes(attributes)
-				a.thumb__zoom.i-ui-btn-rnd(href=imgUrl, data-fancybox)
-				.thumb__img(style='background-image: url("'+ imgUrl +'")')
+				.thumb__img(style='background-image: url("'+ props.imgUrl +'")')
 
 	- else
 		// Не передан источник изображения

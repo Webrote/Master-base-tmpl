@@ -364,13 +364,15 @@ gulp.task('test:pug', function () {
     .pipe(pugLinter());
 });
 
-// Конкатенация и углификация Javascript
-gulp.task('js', function (callback) {
+// Применяем Babel к пользовательским скриптам а затем-
+// конкатенация и углификация Javascript
+gulp.task('blocks:js', function (callback) {
+  const babel = require('gulp-babel');
   const uglify = require('gulp-uglify');
   const concat = require('gulp-concat');
-  if(lists.js.length > 0){
-    console.log('---------- Обработка JS');
-    return gulp.src(lists.js)
+  if(lists.jsBlocks.length > 0){
+    console.log('---------- Обработка пользовательских JS');
+    return gulp.src(lists.jsBlocks)
       .pipe(plumber({
         errorHandler: function(err) {
           notify.onError({
@@ -380,8 +382,40 @@ gulp.task('js', function (callback) {
           this.emit('end');
         }
       }))
-      .pipe(concat('script.min.js'))
+      .pipe(babel({
+        presets: ['env']
+      }))
+      .pipe(gulpIf(!isDev, concat('main.min.js'), concat('main.js')))
       .pipe(gulpIf(!isDev, uglify().on('error', function(e){console.log(e);})))
+      .pipe(size({
+        title: 'Размер',
+        showFiles: true,
+        showTotal: false,
+      }))
+      .pipe(gulp.dest(dirs.buildPath + '/js'));
+  }
+  else {
+    console.log('---------- Обработка JS: в сборке нет JS-файлов');
+    callback();
+  }
+});
+
+// Конкатенация библиотечных Javascript
+gulp.task('libraries:js', function (callback) {
+  const concat = require('gulp-concat');
+  if(lists.jsLibraries.length > 0){
+    console.log('---------- Обработка библиотечных JS');
+    return gulp.src(lists.jsLibraries)
+      .pipe(plumber({
+        errorHandler: function(err) {
+          notify.onError({
+            title: 'Javascript concat/uglify error',
+            message: err.message
+          })(err);
+          this.emit('end');
+        }
+      }))
+      .pipe(concat('scripts.min.js'))
       .pipe(size({
         title: 'Размер',
         showFiles: true,
@@ -422,7 +456,7 @@ gulp.task('img:opt', function (callback) {
 gulp.task('build', gulp.series(
   'clean',
   gulp.parallel('sprite:svg', 'sprite:png', 'copy:favicon', 'copy:favicon:data'),
-  gulp.parallel('style', 'style:single', 'js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'),
+  gulp.parallel('style', 'style:single', 'blocks:js', 'libraries:js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'),
   'pug'
 ));
 
@@ -492,8 +526,13 @@ gulp.task('serve', gulp.series('build', function() {
   }
 
   // JS-файлы блоков
-  if(lists.js.length) {
-    gulp.watch(lists.js, gulp.series('js', reload));
+  if(lists.jsBlocks.length) {
+    gulp.watch(lists.jsBlocks, gulp.series('blocks:js', reload));
+  }
+
+  // JS-файлы библиотек
+  if(lists.jsLibraries.length) {
+    gulp.watch(lists.jsLibraries, gulp.series('libraries:js', reload));
   }
 
   // SVG-изображения, попадающие в спрайт
@@ -521,10 +560,12 @@ gulp.task('default',
  * @return {object}
  */
 function getFilesList(config){
-
+  // отдельное свойство для скриптов из Blocks
+  // отдельное свойстыо для подключаемых библиотек
   let res = {
     'css': [],
-    'js': [],
+    'jsBlocks': [],
+    'jsLibraries': [],
     'img': [],
     'pug': [],
     'blocksDirs': [],
@@ -562,11 +603,11 @@ function getFilesList(config){
 
       // Скрипты
       if(fileExist(blockPath + blockName + '.js')){
-        res.js.push(blockPath + blockName + '.js');
+        res.jsBlocks.push(blockPath + blockName + '.js');
         if(config.blocks[blockName].length) {
           config.blocks[blockName].forEach(function(elementName) {
             if(fileExist(blockPath + blockName + elementName + '.js')){
-              res.js.push(blockPath + blockName + elementName + '.js');
+              res.jsBlocks.push(blockPath + blockName + elementName + '.js');
             }
           });
         }
@@ -591,8 +632,9 @@ function getFilesList(config){
   // Добавления
   res.css = res.css.concat(config.addCssAfter);
   res.css = config.addCssBefore.concat(res.css);
-  res.js = res.js.concat(config.addJsAfter);
-  res.js = config.addJsBefore.concat(res.js);
+  res.jsBlocks = res.jsBlocks.concat(config.customJsAfter);
+  res.jsLibraries = res.jsLibraries.concat(config.addJsAfter);
+  res.jsLibraries = config.addJsBefore.concat(res.jsLibraries);
   res.img = config.addImages.concat(res.img);
 
   return res;
