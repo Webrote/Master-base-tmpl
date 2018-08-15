@@ -31,7 +31,7 @@ mixin field-range(props)
     if(typeof(props.mods) !== 'undefined' && props.mods) {
       var modsList = props.mods.split(',');
       for (var i = 0; i < modsList.length; i++) {
-        allMods = allMods + ' field-range--' + modsList[i].trim();
+        allMods = allMods + ' field-range_' + modsList[i].trim();
       }
     }
 
