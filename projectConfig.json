@@ -64,7 +64,7 @@
     "../../node_modules/nouislider/distribute/nouislider.css"
   ],
   "addCssAfter": [],
-  "singleCompiled": [
+  "singleCssCompiled": [
     "./src/scss/index-styles.styl"
   ],
   "addJsBefore": [
@@ -88,6 +88,7 @@
   "customJsAfter": [
     "./src/js/global-script.js"
   ],
+  "singleJsCompiled": [],
   "addImages": [
     "./src/img/*.{jpg,jpeg,gif,png,svg,ico}"
   ],

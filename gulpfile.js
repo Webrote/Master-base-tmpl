@@ -110,14 +110,14 @@ gulp.task('style', function () {
 
 // Компиляция отдельных файлов
 gulp.task('style:single', function (callback) {
-  if(projectConfig.singleCompiled.length) {
+  if(projectConfig.singleCssCompiled.length) {
     const stylus = require('gulp-stylus');
     const nib = require('nib');
     const sourcemaps = require('gulp-sourcemaps');
     const wait = require('gulp-wait');
     const insert = require('gulp-insert');
     console.log('---------- Компиляция добавочных стилей');
-    return gulp.src(projectConfig.singleCompiled)
+    return gulp.src(projectConfig.singleCssCompiled)
       .pipe(plumber({
         errorHandler: function(err) {
           notify.onError({
@@ -429,6 +429,43 @@ gulp.task('libraries:js', function (callback) {
   }
 });
 
+// Компиляция отдельных JS файлов (Babel)
+gulp.task('js:single', function (callback) {
+  if(projectConfig.singleJsCompiled.length){
+    const babel = require('gulp-babel');
+    const uglify = require('gulp-uglify');
+    const concat = require('gulp-concat');
+    console.log('---------- Компиляция добавочных JS');
+    return gulp.src(projectConfig.singleJsCompiled)
+      .pipe(plumber({
+        errorHandler: function(err) {
+          notify.onError({
+            title: 'Single Javascript compilation error',
+            message: err.message
+          })(err);
+          this.emit('end');
+        }
+      }))
+      // .pipe(wait(100))
+      .pipe(debug({title: "Single Javascript:"}))
+      .pipe(babel({
+        presets: ['env']
+      }))
+      .pipe(gulpIf(!isDev, uglify().on('error', function(e){console.log(e);})))
+      .pipe(size({
+        title: 'Размер',
+        showFiles: true,
+        showTotal: false,
+      }))
+      .pipe(gulp.dest(dirs.buildPath + '/js'))
+      .pipe(browserSync.stream());
+  }
+  else {
+    // console.log('---------- Обработка JS: в сборке нет JS-файлов');
+    callback();
+  }
+});
+
 // Ручная оптимизация изображений
 // Использование: folder=src/img npm start img:opt
 const folder = process.env.folder;
@@ -456,7 +493,7 @@ gulp.task('img:opt', function (callback) {
 gulp.task('build', gulp.series(
   'clean',
   gulp.parallel('sprite:svg', 'sprite:png', 'copy:favicon', 'copy:favicon:data'),
-  gulp.parallel('style', 'style:single', 'blocks:js', 'libraries:js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'),
+  gulp.parallel('style', 'style:single', 'js:single', 'blocks:js', 'libraries:js', 'copy:css', 'copy:img', 'copy:js', 'copy:fonts'),
   'pug'
 ));
 
@@ -490,8 +527,8 @@ gulp.task('serve', gulp.series('build', function() {
   gulp.watch(stylePaths, gulp.series('style'));
 
   // Стили, которые нужно компилировать отдельно
-  if(projectConfig.singleCompiled.length) {
-    gulp.watch(projectConfig.singleCompiled, gulp.series('style:single'));
+  if(projectConfig.singleCssCompiled.length) {
+    gulp.watch(projectConfig.singleCssCompiled, gulp.series('style:single'));
   }
 
   // CSS-файлы, которые нужно просто копировать
@@ -507,6 +544,11 @@ gulp.task('serve', gulp.series('build', function() {
   // JS-файлы, которые нужно просто копировать
   if(projectConfig.copiedJs.length) {
     gulp.watch(projectConfig.copiedJs, gulp.series('copy:js', reload));
+  }
+
+  // JS-файлы, которые нужно компилировать отдельно
+  if(projectConfig.singleJsCompiled.length) {
+    gulp.watch(projectConfig.singleJsCompiled, gulp.series('js:single', reload));
   }
 
   // Шрфты
